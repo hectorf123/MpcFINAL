@@ -1,0 +1,73 @@
+package co.mpc.frontend.componentes.beans;
+
+import co.mpc.frontend.vehiculos.beans.*;
+import co.mpc.backend.model.persistence.entities.Componente;
+import co.mpc.backend.model.persistence.facades.ComponenteFacadeLocal;
+import co.mpc.frontend.logica.IManagedBean;
+import java.io.Serializable;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.inject.Named;
+import javax.enterprise.context.RequestScoped;
+
+/**
+ *
+ * @author Brayan Mendez
+ */
+
+@Named(value = "componenteManagedBean")
+@RequestScoped
+public class ComponenteManagedBean implements Serializable, IManagedBean<Componente>{
+
+
+    
+    private Componente componente;
+    
+    @EJB
+    
+    private ComponenteFacadeLocal componenteFacadeLocal;
+    
+    public ComponenteManagedBean() {
+    }
+    
+    @PostConstruct
+    public void init(){
+        componente = new Componente(); 
+    }
+    
+    @Override
+    public Componente getObjectByKey(Integer id) {
+        return componenteFacadeLocal.find(id);
+    }
+    
+
+    public Componente getComponente() {
+        return componente;
+    }
+
+    public void setComponente(Componente componente) {
+        this.componente = componente;
+    }
+    
+    
+    // Metodos
+    public void registrarComponente(){
+        componenteFacadeLocal.create(componente);
+    }
+    
+    public void eliminarComponente(Componente c){
+        componenteFacadeLocal.remove(c);
+    }
+    
+    public List<Componente> listaComponente(){
+        return componenteFacadeLocal.findAll();
+    }
+    
+    public void editarComponente(Componente c){
+        componenteFacadeLocal.edit(c);
+    }
+
+
+    
+}
