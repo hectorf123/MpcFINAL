@@ -9,6 +9,7 @@ import co.mpc.backend.model.persistence.entities.Orden;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -28,5 +29,15 @@ public class OrdenFacade extends AbstractFacade<Orden> implements OrdenFacadeLoc
     public OrdenFacade() {
         super(Orden.class);
     }
-    
+
+    @Override
+    public Orden verificarOrden(Orden o) {
+        TypedQuery<Orden> tO = em.createNamedQuery("Orden.findByIdVehiculo", Orden.class);
+        tO.setParameter("idVehiculo", o.getIdVehiculo());
+        if (tO.getResultList().size() > 1) {
+            return tO.getResultList().get(0);
+        } else {
+            return null;
+        }
+    }
 }

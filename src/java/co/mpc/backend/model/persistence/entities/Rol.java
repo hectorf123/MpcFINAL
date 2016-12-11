@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r")
     , @NamedQuery(name = "Rol.findByIdRol", query = "SELECT r FROM Rol r WHERE r.idRol = :idRol")
     , @NamedQuery(name = "Rol.findByNombreRol", query = "SELECT r FROM Rol r WHERE r.nombreRol = :nombreRol")})
-public class Rol implements Serializable {
+public class Rol implements Serializable,IEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -139,6 +139,11 @@ public class Rol implements Serializable {
     @Override
     public String toString() {
         return "co.mpc.backend.model.persistence.entities.Rol[ idRol=" + idRol + " ]";
+    }
+
+    @Override
+    public String getPK() {
+        return idRol.toString();
     }
     
 }

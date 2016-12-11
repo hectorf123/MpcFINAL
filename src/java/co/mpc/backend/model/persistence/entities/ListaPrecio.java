@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ListaPrecio.findAll", query = "SELECT l FROM ListaPrecio l")
     , @NamedQuery(name = "ListaPrecio.findByIdListaPrecio", query = "SELECT l FROM ListaPrecio l WHERE l.idListaPrecio = :idListaPrecio")
     , @NamedQuery(name = "ListaPrecio.findByPrecio", query = "SELECT l FROM ListaPrecio l WHERE l.precio = :precio")})
-public class ListaPrecio implements Serializable {
+public class ListaPrecio implements Serializable, IEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -111,6 +111,12 @@ public class ListaPrecio implements Serializable {
     @Override
     public String toString() {
         return "co.mpc.backend.model.persistence.entities.ListaPrecio[ idListaPrecio=" + idListaPrecio + " ]";
+    }
+
+    @Override
+    public String getPK() {
+        return idListaPrecio.toString();
+    
     }
     
 }

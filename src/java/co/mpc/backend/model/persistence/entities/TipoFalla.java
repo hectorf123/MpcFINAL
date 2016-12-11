@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TipoFalla.findAll", query = "SELECT t FROM TipoFalla t")
     , @NamedQuery(name = "TipoFalla.findByIdTipoFalla", query = "SELECT t FROM TipoFalla t WHERE t.idTipoFalla = :idTipoFalla")
     , @NamedQuery(name = "TipoFalla.findByNombreTipoFalla", query = "SELECT t FROM TipoFalla t WHERE t.nombreTipoFalla = :nombreTipoFalla")})
-public class TipoFalla implements Serializable {
+public class TipoFalla implements Serializable,IEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -125,6 +125,11 @@ public class TipoFalla implements Serializable {
     @Override
     public String toString() {
         return "co.mpc.backend.model.persistence.entities.TipoFalla[ idTipoFalla=" + idTipoFalla + " ]";
+    }
+
+    @Override
+    public String getPK() {
+        return idTipoFalla.toString();
     }
     
 }

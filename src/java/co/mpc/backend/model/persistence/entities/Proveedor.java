@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Proveedor.findByIdProvedor", query = "SELECT p FROM Proveedor p WHERE p.idProvedor = :idProvedor")
     , @NamedQuery(name = "Proveedor.findByNombreProveedor", query = "SELECT p FROM Proveedor p WHERE p.nombreProveedor = :nombreProveedor")
     , @NamedQuery(name = "Proveedor.findByTelefono", query = "SELECT p FROM Proveedor p WHERE p.telefono = :telefono")})
-public class Proveedor implements Serializable {
+public class Proveedor implements Serializable, IEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -166,6 +166,11 @@ public class Proveedor implements Serializable {
     @Override
     public String toString() {
         return "co.mpc.backend.model.persistence.entities.Proveedor[ idProvedor=" + idProvedor + " ]";
+    }
+
+    @Override
+    public String getPK() {
+        return idProvedor.toString();
     }
     
 }

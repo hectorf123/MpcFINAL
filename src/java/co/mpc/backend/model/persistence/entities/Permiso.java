@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Permiso.findByEstado", query = "SELECT p FROM Permiso p WHERE p.estado = :estado")
     , @NamedQuery(name = "Permiso.findByUrl", query = "SELECT p FROM Permiso p WHERE p.url = :url")
     , @NamedQuery(name = "Permiso.findByIcono", query = "SELECT p FROM Permiso p WHERE p.icono = :icono")})
-public class Permiso implements Serializable {
+public class Permiso implements Serializable, IEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -165,6 +165,11 @@ public class Permiso implements Serializable {
     @Override
     public String toString() {
         return "co.mpc.backend.model.persistence.entities.Permiso[ idPermiso=" + idPermiso + " ]";
+    }
+
+    @Override
+    public String getPK() {
+        return idPermiso.toString();
     }
     
 }

@@ -47,7 +47,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Vehiculo.findByModelo", query = "SELECT v FROM Vehiculo v WHERE v.modelo = :modelo")
     , @NamedQuery(name = "Vehiculo.findByMarca", query = "SELECT v FROM Vehiculo v WHERE v.marca = :marca")
     , @NamedQuery(name = "Vehiculo.findByColor", query = "SELECT v FROM Vehiculo v WHERE v.color = :color")})
-public class Vehiculo implements Serializable {
+public class Vehiculo implements Serializable,IEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -321,6 +321,11 @@ public class Vehiculo implements Serializable {
     @Override
     public String toString() {
         return "co.mpc.backend.model.persistence.entities.Vehiculo[ idVehiculo=" + idVehiculo + " ]";
+    }
+
+    @Override
+    public String getPK() {
+        return idVehiculo.toString();
     }
     
 }

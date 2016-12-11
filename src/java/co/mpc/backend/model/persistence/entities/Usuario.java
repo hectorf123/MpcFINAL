@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByTelefono", query = "SELECT u FROM Usuario u WHERE u.telefono = :telefono")
     , @NamedQuery(name = "Usuario.findByFechaNacimiento", query = "SELECT u FROM Usuario u WHERE u.fechaNacimiento = :fechaNacimiento")
     , @NamedQuery(name = "Usuario.findByCorreoElectronico", query = "SELECT u FROM Usuario u WHERE u.correoElectronico = :correoElectronico")})
-public class Usuario implements Serializable {
+public class Usuario implements Serializable,IEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -259,6 +259,11 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "co.mpc.backend.model.persistence.entities.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+
+    @Override
+    public String getPK() {
+        return idUsuario.toString();
     }
     
 }
