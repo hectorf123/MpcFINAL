@@ -3,14 +3,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:body>
 
         <ui:composition template="./../../resources/plantillampc.xhtml">
 
             <ui:define name="main">
+                <div class="row sin-margen caja miga">
+                    <div class="col-xs-12 col-sm-6">
+                        <ol class="breadcrumb">
+                            <li><a href="inicio.html"><i class="mpc-home"></i>Inicio</a></li>
+                            <li class="active"><i class="mpc-list-alt"></i>Componentes</li>
+                        </ol>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 start-xs end-sm">
+                        <a href="#0" class="btn btn-primary agregar-com" data-toggle="modal" data-target="#registrar_componente"><i class="mpc-plus"></i>Agregar componente</a>
+                    </div>
+                </div>
                 <h:messages />
                 <f:view>
                     <div class="col-xs-12 col-md-8 panel panel-default tablas last-md first-xs">
@@ -42,8 +52,6 @@
                     </div>
                 </f:view>
                 <h:outputScript name="js/jquery-dist.js"/>
-                <h:outputScript name="js/boostrap-dist.js"/>
-                <h:outputScript name="js/core-dist.js"/>
                 <h:outputScript name="js/jquery-datatables-dist.js"/>
                 <h:outputScript name="js/dataTables-boostrap-dist.js"/>
                 <script>

@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../resources/plantillampc.xhtml">
+
+            <ui:define name="main">
+                <!-- Miga de pan -->
+                <div class="row sin-margen caja miga">
+                    <div class="col-xs-12 col-sm-6">
+                        <ol class="breadcrumb">
+                            <li><a href="inicio.html"><i class="mpc-home"></i>Inicio</a></li>
+                            <li class="active"><i class="mpc-list-alt"></i>Órdenes</li>
+                        </ol>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 start-xs end-sm">
+                        <a class="btn btn-primary" id="addOrden"><i class="mpc-plus"></i>Crear orden</a>
+                    </div>
+                </div>
+                <!-- Contenido -->
+                <div class="row">
+                    <div class="col-xs-12 col-md-4 last-xs first-md" style="padding: 0 10px;">
+                        <div class="row caja blanca">
+                            <div class="col-xs-12 col-sm-6 col-md-12 no-padding">
+                                <canvas id="myCharts" width="400" height="400" style="max-width: 600px;" class="noselect"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-8 panel panel-default tablas last-md first-xs">
+                        <div class="panel-body table-responsive">
+                            <f:view>
+                                <h:form>
+                                    <table id="tabla-ordenes" class="table table-hover table-condensed mitabla table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Tipo orden</th>
+                                                <th>Matrícula</th>
+                                                <th>Estado</th>
+                                                <th>Expedición</th>
+                                                <th>Plazo máx</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <ui:repeat value="#{ordenManagedBean.listarOrden()}" var="item">
+                                            <tr>
+                                                <td>#{item.idTipoOrden.nombreTipoOrden}</td>
+                                                <td>#{item.idVehiculo.matricula}</td>
+                                                <td>#{item.idEstadoOrden.nombreEstadoOrden}</td>
+                                                <td>
+                                                    <h:outputText value="#{item.fechaEmision}" >
+                                                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                                                    </h:outputText>
+                                                </td>
+                                                <td>
+                                                    <h:outputText value="#{item.plazoMaximo}" >
+                                                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                                                    </h:outputText>
+                                                </td>
+                                            </tr>
+                                        </ui:repeat>
+                                        </tbody>
+                                    </table>
+                                </h:form>
+                            </f:view>
+                        </div>
+                    </div>
+                </div>
+            <h:outputScript name="js/jquery-dist.js"/>
+            <h:outputScript name="js/jquery-datatables-dist.js"/>
+            <h:outputScript name="js/dataTables-boostrap-dist.js"/>
+            <h:outputScript name="js/framework/button-table.js"/>
+            <h:outputScript name="js/chart-dist.js"/>
+            <script>
+                var tablaOrdenes = $('#tabla-ordenes').DataTable( {
+                    "pageLength": 50,
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'excelHtml5',
+                            title: 'Órdenes registradas'
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            message: 'Órdenes registradas.',
+                            alignment: 'center',
+                            title: 'Órdenes registradas'
+                        }
+                    ]
+                });
+                var activa = $("#tabla-ordenes tbody tr td:nth-child(3):contains('Activa')").length;
+                var cancelada = $("#tabla-ordenes tbody tr td:nth-child(3):contains('Cancelada')").length;
+                var finalizada = $("#tabla-ordenes tbody tr td:nth-child(3):contains('Finalizada')").length;
+                var pendiente = $("#tabla-ordenes tbody tr td:nth-child(3):contains('Pendinte')").length;
+                var data = {
+                    labels: ["Activa", "Candeladas", "Finaliadas", "Pendientes"],
+                    datasets: [{
+                      backgroundColor: ["#2ECC71","#F75555", "#34495E", "#999999"],
+                      data: [activa,cancelada,finalizada,pendiente]
+                    }]
+                };
+                var options = {
+                    animation: {
+                        animateRotate: true,
+                        animateScale: true
+                    },
+                    cutoutPercentage: 60,
+                    onClick: nuevo,
+                    legend:{
+                        position: "bottom"
+                    },
+                    hover: {
+                        mode: 'single'
+                    }
+                };
+                var colera = document.getElementById("myCharts");
+                var myChart = new Chart(colera, {
+                    type: 'doughnut',
+                    data: data,
+                    options:options
+                  });
+                function nuevo (evt, element){
+                    var ty = data.datasets[0].data;
+                    var up = ty.indexOf(data.datasets[0].data[element[0]._index]);
+                    if (up === 0) {
+                        tablaOrdenes.search('activa').draw();
+                    } else if (up === 1) {
+                        tablaOrdenes.search('cancelada').draw();
+                    } else if (up === 2) {
+                        tablaOrdenes.search('finalizada').draw();
+                    } else if (up === 3) {
+                        tablaOrdenes.search('pendiente').draw();
+                    }
+                }
+            </script>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

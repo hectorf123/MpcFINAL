@@ -30,6 +30,5 @@ public interface OrdenFacadeLocal {
 
     int count();
     
-    public Orden verificarOrden(Orden o);
-    
+    Orden verificarOrden(Orden o);
 }

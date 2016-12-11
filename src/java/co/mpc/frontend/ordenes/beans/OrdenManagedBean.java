@@ -65,5 +65,4 @@ public class OrdenManagedBean implements Serializable, IManagedBean<Orden> {
     public List<Orden> listarOrden() {
         return ordenFL.findAll();
     }
-
 }
