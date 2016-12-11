@@ -1,15 +1,14 @@
 package co.mpc.frontend.componentes.beans;
 
-import co.mpc.frontend.vehiculos.beans.*;
 import co.mpc.backend.model.persistence.entities.Componente;
 import co.mpc.backend.model.persistence.facades.ComponenteFacadeLocal;
 import co.mpc.frontend.logica.IManagedBean;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 /**
  *
@@ -19,28 +18,21 @@ import javax.enterprise.context.RequestScoped;
 @Named(value = "componenteManagedBean")
 @RequestScoped
 public class ComponenteManagedBean implements Serializable, IManagedBean<Componente>{
-
-
-    
     private Componente componente;
-    
-    @EJB
-    
-    private ComponenteFacadeLocal componenteFacadeLocal;
-    
+    @Inject private ComponenteFacadeLocal componenteFacadeLocal;
+    /** Creates a new instance of ComponenteManagedBean */
     public ComponenteManagedBean() {
     }
     
     @PostConstruct
     public void init(){
-        componente = new Componente(); 
+        componente = new Componente();
     }
-    
+
     @Override
-    public Componente getObjectByKey(Integer id) {
-        return componenteFacadeLocal.find(id);
+    public Componente getObjectByKey(Integer key) {
+        return componenteFacadeLocal.find(key);
     }
-    
 
     public Componente getComponente() {
         return componente;
@@ -50,24 +42,10 @@ public class ComponenteManagedBean implements Serializable, IManagedBean<Compone
         this.componente = componente;
     }
     
-    
-    // Metodos
-    public void registrarComponente(){
+    public void registrar(){
         componenteFacadeLocal.create(componente);
     }
-    
-    public void eliminarComponente(Componente c){
-        componenteFacadeLocal.remove(c);
-    }
-    
-    public List<Componente> listaComponente(){
+    public List<Componente> listar(){
         return componenteFacadeLocal.findAll();
     }
-    
-    public void editarComponente(Componente c){
-        componenteFacadeLocal.edit(c);
-    }
-
-
-    
 }

@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "EstadoComponente.findAll", query = "SELECT e FROM EstadoComponente e")
     , @NamedQuery(name = "EstadoComponente.findByIdEstadoComponente", query = "SELECT e FROM EstadoComponente e WHERE e.idEstadoComponente = :idEstadoComponente")
     , @NamedQuery(name = "EstadoComponente.findByNombreEstadoComponente", query = "SELECT e FROM EstadoComponente e WHERE e.nombreEstadoComponente = :nombreEstadoComponente")})
-public class EstadoComponente implements Serializable {
+public class EstadoComponente implements Serializable, IEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -112,5 +112,11 @@ public class EstadoComponente implements Serializable {
     public String toString() {
         return "co.mpc.backend.model.persistence.entities.EstadoComponente[ idEstadoComponente=" + idEstadoComponente + " ]";
     }
+
+    @Override
+    public String getPK() {
+        return idEstadoComponente.toString();
+    }
     
+   
 }

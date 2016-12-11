@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "CategoriaComponente.findAll", query = "SELECT c FROM CategoriaComponente c")
     , @NamedQuery(name = "CategoriaComponente.findByIdCategoriaComponente", query = "SELECT c FROM CategoriaComponente c WHERE c.idCategoriaComponente = :idCategoriaComponente")
     , @NamedQuery(name = "CategoriaComponente.findByNombreCategoriaComponente", query = "SELECT c FROM CategoriaComponente c WHERE c.nombreCategoriaComponente = :nombreCategoriaComponente")})
-public class CategoriaComponente implements Serializable {
+public class CategoriaComponente implements Serializable, IEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -95,6 +95,11 @@ public class CategoriaComponente implements Serializable {
     @Override
     public String toString() {
         return "co.mpc.backend.model.persistence.entities.CategoriaComponente[ idCategoriaComponente=" + idCategoriaComponente + " ]";
+    }
+
+    @Override
+    public String getPK() {
+        return idCategoriaComponente.toString();
     }
     
 }
