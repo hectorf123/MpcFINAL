@@ -2,32 +2,94 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet name="css/boostrap-dist.css"/>
+        <h:outputStylesheet name="css/flexboxgrid-dist.css"/>
+        <h:outputStylesheet name="css/formValidation-dist.css"/>
+        <h:outputStylesheet name="css/animate.css"/>
+        <h:outputStylesheet name="css/index-dist.css"/>
+        <h:outputStylesheet name="css/iconos-mpc.css"/>
     </h:head>
     <h:body>
+        <!-- Contenido en header -->
+
+        <header>
+            <nav>
+                <h:form>
+                    <a data-toggle="modal" href='#modal_ingreso'>Iniciar sesión</a>
+                </h:form>
+            </nav>
+        </header>
+        <!--Modal login Mpc-->
         <f:view>
-
-
-            <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="NombreComponente:" for="nombreComponente" />
-                    <h:inputText id="nombreComponente" value="#{componenteManagedBean.componente.nombreComponente}" title="NombreComponente" required="true" requiredMessage="The NombreComponente field is required."/>
-                    <h:outputLabel value="VidaUtil:" for="vidaUtil" />
-                    <h:inputText id="vidaUtil" value="#{componenteManagedBean.componente.vidaUtil}" title="VidaUtil" required="true" requiredMessage="The VidaUtil field is required."/>
-                    <h:outputLabel value="IdCategoriaComponenteComponente:" for="idCategoriaComponenteComponente" />
-                    <h:selectOneMenu id="idCategoriaComponenteComponente" value="#{componenteManagedBean.componente.idCategoriaComponenteComponente}" title="IdCategoriaComponenteComponente" required="true" requiredMessage="The IdCategoriaComponenteComponente field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{sistemaVehiculoManagedBean.listar()}" var="sv" itemLabel="#{sv.nombreCategoriaComponente}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <h:commandButton value="registrar" action="#{componenteManagedBean.registrar()}"/>
-            </h:form>
-            <h:messages />
+            <div class="modal fade" id="modal_ingreso">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <button type="button" class="demodal close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="modal-body">
+                            <form jsf:id="formulario_ingreso" autocomplete="off">
+                                <h1>Iniciar sesión</h1>
+                                <div class="form-group">
+                                    <label for="n-cedula" class="sr-only">Número cédula</label>
+                                    <input type="text" id="n-cedula" name="usuario" class="form-control" placeholder="Número cédula *" jsf:value="#{usuarioManagedBean.usuario.numeroCedula}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="key" class="sr-only">Password</label>
+                                    <input type="password" name="password" id="key" class="form-control" placeholder="Password" jsf:value="#{usuarioManagedBean.usuario.clave}"/>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value=""  class="styled"/>Recordarme</label>
+                                </div>
+                                <div class="alert alert-danger no-ver">
+                                    <button type="button" class="close cerrar-alerta">&times;</button> Datos de ingreso no validos
+                                </div>
+                                <h:commandButton class="btn btn-lg btn-primary btn-block" action="#{usuarioManagedBean.iniciarSesion()}" value="Ingresar">
+                                        <f:ajax execute="@form" render="ajaxp"/>
+                                </h:commandButton>
+                                <h:panelGrid id="ajaxp">
+                                    <h:messages />
+                                </h:panelGrid>
+                                <div class="recuperar">
+                                    <a href="javascript:;" class="cambiar-login">Olvide mi contraseña</a>
+                                </div>
+                            </form>
+                            <form action="" id="recuperar-password" class="no-ver">
+                                <h1>Enviar contraseña</h1>
+                                <div class="form-gruop">
+                                    <p>Introduzca su dirección de correo electrónico. Usted recibirá un enlace con su nueva contraseña.</p>
+                                </div>
+                                <div class="from-gruop">
+                                    <label for="email">Correo electronico *</label>
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="ejemplo@ejemplo.com" />
+                                </div>
+                                <button class="btn btn-lg btn-primary btn-block">Enviar</button>
+                                <div class="recuperar">
+                                    <a href="#0" class="cambiar-password">Iniciar sesión</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </f:view>
+        <!--Fin de modal-->
 
+        <!-- Inicio de main-->
+        <section class="main">
+            <img src="resources/img/logotipo.png" alt=""/>
+            <p>Lleve una facil gestión de mantenimiento desde el diseño y planeación de las tareas de mantenimiento preventivas y correctivas, hasta la generación de órdenes de servicio y el análisis detallado de costos.</p>
+        </section>
+
+        <div class="down">
+            <a class="mpc-down" href="index.html?scrollTo=contenido"></a>
+        </div>
+        
+        <h:outputScript name="js/jquery-dist.js"/>
+        <h:outputScript name="js/boostrap-dist.js"/>
+        <h:outputScript name="js/core-dist.js"/>
     </h:body>
 </html>
 

@@ -14,17 +14,17 @@ import javax.inject.Inject;
 import javax.annotation.PostConstruct;
 import co.mpc.frontend.logica.IManagedBean;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 
 /**
  *
  * @author Andres
  */
 @Named(value="usuarioManagedBean")
-@RequestScoped
+@ViewScoped
 public class UsuarioManagedBean implements Serializable,IManagedBean<Usuario>{
 
     private Usuario usuario;
@@ -77,7 +77,7 @@ public class UsuarioManagedBean implements Serializable,IManagedBean<Usuario>{
     public String iniciarSesion(){
         if(uFL.atenticarUsuario(usuario)!= null){
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
-            return "protegido/inicio";
+            return "/protegido/inicio";
         }
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario no válido."));
         return "index";
