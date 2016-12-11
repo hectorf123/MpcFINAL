@@ -18,7 +18,7 @@
         <h:outputStylesheet name="css/iconos-mpc.css"/>
         <h:outputStylesheet name="css/amaran-min.css"/>
         <link rel="shortcut icon" type="image/x-icon" href="#{resource['img/favicon.png']}"/>
-        <title>Facelets Template</title>
+        <title>Sistema mpc</title>
     </h:head>
 
     <h:body>
@@ -32,7 +32,10 @@
         <main>
             <ui:insert name="main">main</ui:insert>
         </main>
-
+        <h:outputScript name="js/jquery-dist.js"/>
+        <h:outputScript name="js/boostrap-dist.js"/>
+        <h:outputScript name="js/core-dist.js"/>
+        
     </h:body>
 
 </html>
