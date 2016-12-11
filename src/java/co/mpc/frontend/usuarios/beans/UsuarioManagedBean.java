@@ -77,7 +77,7 @@ public class UsuarioManagedBean implements Serializable,IManagedBean<Usuario>{
     public String iniciarSesion(){
         if(uFL.atenticarUsuario(usuario)!= null){
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
-            return "/protegido/inicio";
+            return "protegido/inicio?faces-";
         }
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario no válido."));
         return "index";
