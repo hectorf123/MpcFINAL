@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <body>
+
+       <ui:composition template="./../../resources/plantillampc.xhtml">
+
+         <ui:define name="main">
+                <aside>
+                    <a href="inicio.html"><i class="mpc-home"></i>Inicio</a>
+                    <a href="lista_vehiculos.html"><i class="mpc-book"></i>Vehículos</a>
+                    <a href="#0"><i class="mpc-clipboard"></i>Ficha técnica</a>
+                    <a href="lista_componentes.html"><i class="mpc-droplet"></i>Componentes</a>
+                    <a href="lista_de_ordenes.html"><i class="mpc-list-alt"></i>Ordenes</a>
+                    <a href="#0"><i class="mpc-chart-bar"></i>Estadisticas</a>
+                    <a href="reportes.html"><i class="mpc-book-1"></i>Reportes</a>
+                    <a href="lista_usuarios.html"><i class="mpc-users"></i>Usuarios</a>
+                </aside>
+                <div class="row sin-margen caja miga">
+                    <div class="col-xs-12 col-sm-6">
+                        <ol class="breadcrumb">
+                            <li><a href="inicio.html"><i class="mpc-home"></i>Inicio</a></li>
+                            <li class="active"><i class="mpc-list-alt"></i>Registrar Usuarios</li>
+                        </ol>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 titulo-pagina">
+                        <h1>Usuarios</h1>
+                        <div class="dash-titulo"></div>
+                        <div class="informacion-titular">
+                            <p class="letra success">8 activos</p>
+                            <p class="letra warning">2 pendientes</p>
+                            <p class="letra danger">1 inactivo</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contenido -->
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Registrar Usuario"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="NumeroCedula:" for="numeroCedula" />
+                            <h:inputText id="numeroCedula" value="#{usuarioManagedBean.usuario.numeroCedula}" title="NumeroCedula" required="true" requiredMessage="The NumeroCedula field is required."/>
+                            <h:outputLabel value="Clave:" for="clave" />
+                            <h:inputText id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                            <h:outputLabel value="Nombres:" for="nombres" />
+                            <h:inputText id="nombres" value="#{usuarioManagedBean.usuario.nombres}" title="Nombres" required="true" requiredMessage="The Nombres field is required."/>
+                            <h:outputLabel value="Apellidos:" for="apellidos" />
+                            <h:inputText id="apellidos" value="#{usuarioManagedBean.usuario.apellidos}" title="Apellidos" required="true" requiredMessage="The Apellidos field is required."/>
+                            <h:outputLabel value="Telefono:" for="telefono" />
+                            <h:inputText id="telefono" value="#{usuarioManagedBean.usuario.telefono}" title="Telefono" />
+                            <h:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
+                            <h:inputText id="fechaNacimiento" value="#{usuarioManagedBean.usuario.fechaNacimiento}"  title="FechaNacimiento" required="true" requiredMessage="The FechaNacimiento field is required.">
+                                <f:convertDateTime  pattern="MM/dd/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="CorreoElectronico:" for="correoElectronico" />
+                            <h:inputText id="correoElectronico" value="#{usuarioManagedBean.usuario.correoElectronico}" title="CorreoElectronico" required="true" requiredMessage="The CorreoElectronico field is required."/>
+                            <h:outputLabel value="FotoPerfil:" for="fotoPerfil" />
+                            <h:inputTextarea rows="4" cols="30" id="fotoPerfil" value="#{usuarioManagedBean.usuario.fotoPerfil}" title="FotoPerfil" />
+                            <h:outputLabel value="IdCiudad:" for="idCiudad" />
+                            <h:selectOneMenu id="idCiudad" value="#{usuarioManagedBean.usuario.idCiudad}" title="IdCiudad" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{usuarioManagedBean.listar()}" var="ci" itemLabel="#{ci.idCiudad.nombreCiudad}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="IdEstadoUsuario:" for="idEstadoUsuario" />
+                            <h:selectOneMenu id="idEstadoUsuario" value="#{usuarioManagedBean.usuario.idEstadoUsuario}" title="IdEstadoUsuario" required="true" requiredMessage="The IdEstadoUsuario field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{estadoUsuarioManagedBean.listar()}" var="eu" itemLabel="#{eu.nombreEstadoUsuario}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="IdRol:" for="idRol" />
+                            <h:selectOneMenu id="idRol" value="#{usuarioManagedBean.usuario.idRol}" title="IdRol" required="true" requiredMessage="The IdRol field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{rolManagedBean.listar()}" var="r" itemLabel="#{r.nombreRol}"/>
+                            </h:selectOneMenu>
+                            <h:commandButton value="Registrar" actionListener="#{usuarioManagedBean.registrar()}"></h:commandButton>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+                <h:outputScript name="js/jquery-dist.js"/>
+                <h:outputScript name="js/boostrap-dist.js"/>
+                <h:outputScript name="js/core-dist.js"/>
+                <h:outputScript name="js/jquery-datatables-dist.js"/>
+                <h:outputScript name="js/dataTables-boostrap-dist.js"/>
+                <script>
+                    $('#tabla').DataTable();
+                </script>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
+
+
+

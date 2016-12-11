@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <body>
+
+       <ui:composition template="./../../resources/plantillampc.xhtml">
+
+         <ui:define name="main">
+                <aside>
+                    <a href="inicio.html"><i class="mpc-home"></i>Inicio</a>
+                    <a href="lista_vehiculos.html"><i class="mpc-book"></i>Vehículos</a>
+                    <a href="#0"><i class="mpc-clipboard"></i>Ficha técnica</a>
+                    <a href="lista_componentes.html"><i class="mpc-droplet"></i>Componentes</a>
+                    <a href="lista_de_ordenes.html"><i class="mpc-list-alt"></i>Ordenes</a>
+                    <a href="#0"><i class="mpc-chart-bar"></i>Estadisticas</a>
+                    <a href="reportes.html"><i class="mpc-book-1"></i>Reportes</a>
+                    <a href="lista_usuarios.html"><i class="mpc-users"></i>Usuarios</a>
+                </aside>
+                <div class="row sin-margen caja miga">
+                    <div class="col-xs-12 col-sm-6">
+                        <ol class="breadcrumb">
+                            <li><a href="inicio.html"><i class="mpc-home"></i>Inicio</a></li>
+                            <li class="active"><i class="mpc-list-alt"></i>Lista de Usuarios</li>
+                        </ol>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 titulo-pagina">
+                        <h1>Usuarios</h1>
+                        <div class="dash-titulo"></div>
+                        <div class="informacion-titular">
+                            <p class="letra success">8 activos</p>
+                            <p class="letra warning">2 pendientes</p>
+                            <p class="letra danger">1 inactivo</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 start-xs cuadro-interaccion">
+                        <a href="registrar_usuario.xhtml" class="btn btn-primary"><i class="mpc-plus"></i>Registar Usuario</a>
+                    </div>
+                </div>
+                <!-- Contenido -->
+              <f:view>
+                    <div class="col-xs-12 col-md-8 panel panel-default tablas last-md first-xs">
+                        <div class="panel-body table-responsive">
+                            <h:form>
+                                <table class="table table-striped table-lis" id="tabla">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombres</th>
+                                            <th>Apellidos</th>
+                                            <th>Cédula</th>
+                                            <th>Estado</th>
+                                            <th>Rol</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ui:repeat value="#{usuarioManagedBean.listar()}" var="com" >                        
+                                            <tr>
+                                                <td> #{com.nombres}</td>
+                                                <td> #{com.apellidos}</td>
+                                                <td> #{com.numeroCedula}</td>
+                                                <td> #{com.idEstadoUsuario.nombreEstadoUsuario}</td>
+                                                <td> #{com.idRol.nombreRol}</td>
+                                            </tr>
+                                        </ui:repeat>
+                                    </tbody>
+                                </table>
+                            </h:form>
+                        </div>
+                    </div>
+                </f:view>
+                <h:outputScript name="js/jquery-dist.js"/>
+                <h:outputScript name="js/boostrap-dist.js"/>
+                <h:outputScript name="js/core-dist.js"/>
+                <h:outputScript name="js/jquery-datatables-dist.js"/>
+                <h:outputScript name="js/dataTables-boostrap-dist.js"/>
+                <script>
+                    $('#tabla').DataTable();
+                </script>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
+
