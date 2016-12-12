@@ -10,781 +10,101 @@
         <ui:composition template="./../../resources/plantillampc.xhtml">
 
             <ui:define name="main">
-                 <div class="row sin-margen caja miga">
-            <div class="col-xs-12 col-sm-6">
-                <ol class="breadcrumb">
-                    <li><a href="inicio.html"><i class="mpc-home"></i>Inicio</a></li>
-                    <li class="active"><i class="mpc-list-alt"></i>Lista de vehículos</li>
-                </ol>
-            </div>
-            <div class="col-xs-12 col-sm-6 titulo-pagina">
-                <h1>Vehículos</h1>
-                <div class="dash-titulo"></div>
-                <div class="informacion-titular">
-                    <p class="letra success">4 Disponible</p>
-                    <p class="letra warning">3 En revisión</p>
-                    <p class="letra danger">2 En mantenimiento</p>
-                </div>
-            </div>
-            <div class="col-xs-12 start-xs cuadro-interaccion">
-                <a href="registrar_vehiculo.html" class="btn btn-primary"><i class="mpc-plus"></i>Registrar Vehículo</a>
-            </div>
-        </div>
-        <!-- Contenido -->
-        <div class="row tablas">
-            <div class="col-xs-12">
-                <div class="panel panel-default panel-table">
-                    <div class="panel-body table-responsive">
-                        <table id="vehiculos" class="table table-striped table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>Matricula</th>
-                                    <th>Estado</th>
-                                    <th>Marca</th>
-                                    <th>Modelo</th>
-                                    <th>Color</th>
-                                    <th>Fecha de registro</th>
-                                    <th>Tipo de motor</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>HTV-579</td>
-                                    <td>Disponible</td>
-                                    <td>Scania</td>
-                                    <td>CG 440</td>
-                                    <td>Blanco-azul</td>
-                                    <td>04/06/2015</td>
-                                    <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Rojo</td>
-                                    <td>02/08/2015</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>KHP-985</td>
-                                    <td>En revisión</td>
-                                    <td>Kenworth</td>
-                                    <td>TP 990</td>
-                                    <td>Azul</td>
-                                    <td>31/07/2012</td>
-                                    <td>Dos Tiempos</td>
-                                </tr>
-                                <tr>
-                                    <td>JPL-750</td>
-                                    <td>En revisión</td>
-                                    <td>Volvo</td>
-                                    <td>VM Euro 5</td>
-                                    <td>Negro</td>
-                                    <td>22/12/2016</td>
-                                    <td>Gas natural</td>
-                                </tr>
-                                <tr>
-                                    <td>LKP-523</td>
-                                    <td>Disponible</td>
-                                    <td>Freightliner</td>
-                                    <td>Cascadia</td>
-                                    <td>Amarillo</td>
-                                    <td>18/10/2015</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                                <tr>
-                                    <td>TOP-610</td>
-                                    <td>Disponible</td>
-                                    <td>Mack</td>
-                                    <td>PH 500</td>
-                                    <td>Blanco</td>
-                                    <td>14/01/2014</td>
-                                    <td>Estratificada</td>
-                                </tr>
-                                <tr>
-                                    <td>EFO-843</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Scania</td>
-                                    <td>CG 258</td>
-                                    <td>Negro</td>
-                                    <td>26/06/2013</td>
-                                    <td>Gasolina</td>
-                                </tr>
-                                <tr>
-                                    <td>YHL-961</td>
-                                    <td>En revisión</td>
-                                        <td>Doge</td>
-                                        <td>300</td>
-                                        <td>Plateado</td>
-                                        <td>14/07/2012</td>
-                                        <td>Diésel</td>
-                                </tr>
-                                <tr>
-                                    <td>PLD-561</td>
-                                    <td>En mantenimineto</td>
-                                    <td>Volvo</td>
-                                    <td>VH Euro 3</td>
-                                    <td>Verde</td>
-                                    <td>12/04/2011</td>
-                                    <td>Eléctrico</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <f:view>
+                    <div class="row sin-margen caja miga">
+                        <div class="col-xs-12 col-sm-6">
+                            <ol class="breadcrumb">
+                                <li><a href="inicio.html"><i class="mpc-home"></i>Inicio</a></li>
+                                <li class="active"><i class="mpc-list-alt"></i>Lista de vehículos</li>
+                            </ol>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 titulo-pagina">
+                            <h1>Vehículos</h1>
+                            <div class="dash-titulo"></div>
+                            <div class="informacion-titular">
+                                <p class="letra success">4 Disponible</p>
+                                <p class="letra warning">3 En revisión</p>
+                                <p class="letra danger">2 En mantenimiento</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 start-xs cuadro-interaccion">
+                            <a href="registrar_vehiculo.xhtml" class="btn btn-primary"><i class="mpc-plus"></i>Registrar Vehículo</a>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                    <!-- Contenido -->
+                    <div class="row tablas">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default panel-table">
+                                <div class="panel-body table-responsive">
+                                    <table id="vehiculos" class="table table-striped table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>Matricula</th>
+                                                <th>Estado</th>
+                                                <th>Marca</th>
+                                                <th>Modelo</th>
+                                                <th>Color</th>
+                                                <th>Kilometraje</th>
+                                                <th>Combustible</th>
+                                                <th>Numero de chasis</th>
+                                                <th>Tonelaje Maximo</th>
+                                                <th>Cilindraje</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <ui:repeat value="#{vehiculoManagedBean.listar()}" var="item">
+                                            <tbody>
+                                                <tr>
+                                                    <td>#{item.matricula}</td>
+                                                    <td>#{item.idEstadoVehiculo.nombreEstadoVehiuclo}</td>
+                                                    <td>#{item.marca}</td>
+                                                    <td>#{item.modelo}</td>
+                                                    <td>#{item.color}</td>
+                                                    <td>#{item.kilometraje}</td>
+                                                    <td>#{item.combustible}</td>
+                                                    <td>#{item.numeroChasis}</td>
+                                                    <td>#{item.tonelajeMax}</td>
+                                                    <td>#{item.cilindraje}</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </ui:repeat>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </f:view>
+                <h:outputScript name="js/jquery-dist.js"/>
+                <h:outputScript name="js/boostrap-dist.js"/>
+                <h:outputScript name="js/jquery-datatables-dist.js"/>
+                <h:outputScript name="js/dataTables-boostrap-dist.js"/>
+                <h:outputScript name="js/core-dist.js"/>
+                <h:outputScript name="js/framework/button-table.js"/>
+                <h:outputScript name="text/javascript"/>
+                <script>
+                    $('td:last-child').parent().append('<td><a href="ficha_tecnica.xhtml" class="mpc-eye" data-toggle="ver-vehiculo" data-placement="top" title="Ver ficha tecnica"></a></td>');
+
+                    $('[data-toggle="ver-vehiculo"]').tooltip();
+
+                    $('#vehiculos').DataTable({
+                        "pageLength": 25,
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                extend: 'excelHtml5',
+                                title: 'Lista Vehículos'
+                            },
+                            {
+                                extend: 'pdfHtml5',
+                                message: 'Lista de vehículos registrados hasta la fecha.',
+                                alignment: 'center',
+                                title: 'Lista Vehículos'
+                            }
+                        ]
+                    });
+                </script>
+
             </ui:define>
 
         </ui:composition>

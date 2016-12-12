@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <body>
+
+        <ui:composition template="./../../resources/plantillampc.xhtml">
+
+            <ui:define name="main">
+                <f:view>
+                    <div class="row sin-margen caja miga">
+                        <div class="col-xs-12 col-sm-6">
+                            <ol class="breadcrumb">
+                                <li><a href="inicio.html"><i class="mpc-home"></i>Inicio</a></li>
+                                <li><a href="lista_vehiculos.xhtml"><i class="mpc-list-alt"></i>Lista de vehículos</a></li>
+                                <li class="active"><i class="mpc-plus"></i>Nuevo vehículo</li>
+                            </ol>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 start-xs end-sm">
+                        </div>
+                    </div>
+                    <!-- Contenido -->
+                    <div class="row">
+                        <form id="formularioRegistroUsuario" class="col-xs-12 col-md-6 caja blanca">
+                            <div class="flexible between-xs middle-xs col-xs-12">
+                                <h2>Registro de vehículo</h2>
+                                <a href="#0">Información</a>
+                            </div>
+                            <div class="col-xs-12">
+                                <h3>1. Datos generales.</h3>
+                               
+                                    <div class="row">
+                                        <div class="form-group col-xs-12 col-md-6">
+                                            <label class="control-label">Matrícula *</label>
+                                            <input type="text" class="form-control" name="matricula" placeholder="VHJ 876" value="#{vehiculoManagedBean.vehiculo.matricula}" />
+                                        </div>
+                                        <div class="form-group col-xs-12 col-md-6">
+                                            <label class="control-label">Número chásis *</label>
+                                            <input type="text" class="form-control" name="chasis" placeholder="HDQ WW12DS 19971617" value="#{vehiculoManagedBean.vehiculo.numeroChasis}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-xs-12 col-sm-6">
+                                            <label class="control-label">Cilindraje *</label>
+                                            <input type="text" class="form-control" name="cilindraje" placeholder="1300 cm^3" value="#{vehiculoManagedBean.vehiculo.cilindraje}"></input>
+                                        </div>
+                                        <div class="form-group col-xs-12 col-sm-6 ">
+                                            <label class="control-label">Combustible</label>
+                                            <select class="form-control" name="combustible">
+                                                <option></option>
+                                                <option>Gasolina</option>
+                                                <option>Gas vehícular</option>
+                                                <option>Diesel</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-xs-12 col-md-6">
+                                            <label class="control-label">Marca *</label>
+                                            <input type="text" class="form-control" name="marca" placeholder="Nissan" />
+                                        </div>
+                                        <div class="form-group col-xs-12 col-md-6">
+                                            <label class="control-label">Modelo *</label>
+                                            <input type="text" class="form-control" name="modelo" placeholder="Cherry" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-xs-12 col-md-6">
+                                            <label class="control-label">Kilometraje</label>
+                                            <input type="text" class="form-control" name="kilometraje" placeholder="Solo números"></input>
+                                        </div>
+                                        <div class="form-group col-xs-12 col-md-6">
+                                            <label class="control-label">Tonelaje Maximo</label>
+                                            <input type="text" class="form-control" name="tonelaje" placeholder="1.0 1.5 2.3 4"></input>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-xs-12 col-md-6">
+                                            <label class=" control-label">Color</label>
+                                            <input type="text" class="form-control" name="color" placeholder="Blanco" value="Blanco" />
+                                        </div>
+                                        <div class="form-group col-xs-12 col-md-6">
+                                            <label for="">Foto vehículo</label>
+                                            <input type="file" class="smart-file" name="sample3[]" data-label="Ajuntar foto vehículo"></input>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-primary pull-left" name="signup" value="Sign up">Registrar nuevo Vehículo</button>
+                            </div>
+                        </form>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="page-header">
+                                <h2>
+                                    Tenga en cuenta que...
+                                </h2>
+                                <hr>
+                                    <ul style="margin-left: 20px;">
+                                        <li>
+                                            Debe de tener pleno conocimiento de los datos del vehículo para su registro.
+                                        </li>
+                                        <li>
+                                            Luego de registrarese el vehículo, se podrá actualizar su información.
+                                        </li>
+                                    </ul>
+                                </hr>
+                            </div>
+                        </div>
+                    </div>
+                </f:view>
+                <script src="../js/jquery-dist.js"></script>
+                <script src="../js/boostrap-dist.js"></script>
+                <script src="../js/jquery-confirm-dist.js"></script>
+                <script src="../js/formValidation-dist.js"></script>
+                <script src="../js/framework/bootstrap-dist.js"></script>
+                <script src="../js/bootstrap-filestyle.js"></script>
+                <script src="../js/jquery-mask.js"></script>
+                <script src="../js/core-dist.js"></script>
+                <script>
+                    $(document).ready(function() {
+
+                        $('[name="matricula"]').click().css({'text-transform': 'uppercase'}).mask('SSS 999');
+                        $('[name="chasis"]').click().css({ 'text-transform': 'uppercase'}).mask('AAA AAAAAA 00000000', {translation: {'A': {pattern: /[a-zA-Z0-9]/}}});
+                        $('[name="cilindraje"]').mask('0000'+'c');
+                        $('[name="kilometraje"]').mask('#');
+                        $('[name="tonelaje"]').mask('0.0');
+                        $('[name="marca"]').css({'text-transform': 'capitalize'}).mask('SSSSSSSSSSSS');
+                        $('[name="modelo"]').css({'text-transform': 'capitalize' }).mask('AAAAAAAAAAA');
+                        $('[name="color"]').css({'text-transform': 'capitalize' }).mask('SSSSSSSSS');
+                        $('.smart-file').bootstrapFileField({ 
+                            maxNumFiles: 1, 
+                            fileTypes: 'image/jpeg,image/png', 
+                            maxFileSize: 80000 // 80kb in bytes 
+                        });
+
+                        $('#formularioRegistroUsuario')
+                            .formValidation({
+                                framework: 'bootstrap',
+                                fields: {
+                                    matricula: {
+                                        validators: {
+                                            notEmpty: {
+                                                message: 'La matrícula del vehículo es requerida.'
+                                            }
+                                        }
+                                    },
+                                    chasis: {
+                                        validators: {
+                                            notEmpty: {
+                                                message: 'El número de chásis es requerido.'
+                                            },
+                                            stringLength: {
+                                                min: 19,
+                                                max: 19,
+                                                message: '1. Tres caracteres (letras o cifras) <br></br> 2. 6 caracteres (letras o cifras) <br></br> 3. 8 Cifras'
+                                            }
+                                        }
+                                    },
+                                    cilindraje: {
+                                        validators: {
+                                            notEmpty: {
+                                                message: 'El cilindraje del vehículo es requerido.'
+                                            },
+                                            stringLength: {
+                                                min: 4,
+                                                message: 'No es un cilindraje valido.'
+                                            }
+                                        }
+                                    },
+                                    combustible: {
+                                        validators: {
+                                            notEmpty: {
+                                                message: 'Se requiere de un combustible'
+                                            }
+                                        }
+                                    },
+                                    modelo: {
+                                        validators: {
+                                            notEmpty: {
+                                                message: 'Se requiere el modelo del vehículo'
+                                            },
+                                            stringLength: {
+                                                min: 4,
+                                                message: 'No parece ser un modelo.'
+                                            }
+                                        }
+                                    },
+                                    marca: {
+                                        validators: {
+                                            notEmpty: {
+                                                message: 'Se requiere la marca del vehículo.'
+                                            },
+                                            stringLength: {
+                                                min: 6,
+                                                message: 'No parece ser una marca.'
+                                            }
+                                        }
+                                    },
+                                    kilometraje: {
+                                        validators: {
+                                            notEmpty: {
+                                                message: 'Se requiere del kilometraje actual.'
+                                            },
+                                            stringLength: {
+                                                min: 2,
+                                                message: 'Minimo 2 cifras.'
+                                            }
+                                        }
+                                    },
+                                    tonelaje: {
+                                        validators: {
+                                            notEmpty: {
+                                                message: 'Se requiere el tonelaje maximo del vehículo.'
+                                            },
+                                            stringLength: {
+                                                min: 3,
+                                                message: 'Ejemplo 1.0.'
+                                            }
+                                        }
+                                    },
+                                    color: {
+                                        validators: {
+                                            notEmpty: {
+                                                message: 'Se requiere que el vehículo tenga un color.'
+                                            },
+                                            stringLength: {
+                                                min: 4,
+                                                message: 'No parece ser un color.'
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                    });
+                </script>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
