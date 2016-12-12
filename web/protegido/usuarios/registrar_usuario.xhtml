@@ -41,7 +41,7 @@
                 <f:view>
 
 
-                    <h:form>
+                    <h:form id="formularioRegistroUsuario">
                         <h1><h:outputText value="Registrar Usuario"/></h1>
                         <h:panelGrid columns="2">
                             <h:outputLabel value="NumeroCedula:" for="numeroCedula" />
@@ -63,9 +63,9 @@
                             <h:outputLabel value="FotoPerfil:" for="fotoPerfil" />
                             <h:inputTextarea rows="4" cols="30" id="fotoPerfil" value="#{usuarioManagedBean.usuario.fotoPerfil}" title="FotoPerfil" />
                             <h:outputLabel value="IdCiudad:" for="idCiudad" />
-                            <h:selectOneMenu id="idCiudad" value="#{usuarioManagedBean.usuario.idCiudad}" title="IdCiudad" >
+                            <h:selectOneMenu id="idCiudad" value="#{ciudadManagedBean.ciudad.nombreCiudad}" title="IdCiudad" >
                                 <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{usuarioManagedBean.listar()}" var="ci" itemLabel="#{ci.idCiudad.nombreCiudad}"/>
+                                <f:selectItems value="#{ciudadManagedBean.listarCiudad()}" var="ci" itemLabel="#{ci.nombreCiudad}"/>
                             </h:selectOneMenu>
                             <h:outputLabel value="IdEstadoUsuario:" for="idEstadoUsuario" />
                             <h:selectOneMenu id="idEstadoUsuario" value="#{usuarioManagedBean.usuario.idEstadoUsuario}" title="IdEstadoUsuario" required="true" requiredMessage="The IdEstadoUsuario field is required.">
