@@ -4,8 +4,9 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    
     <body>
 
         <ui:composition template="./../../resources/plantillampc.xhtml">
@@ -25,7 +26,7 @@
                     </div>
                     <!-- Contenido -->
                     <div class="row">
-                        <form id="formularioRegistroUsuario" class="col-xs-12 col-md-6 caja blanca">
+                        <h:form id="formularioRegistroUsuario" class="col-xs-12 col-md-6 caja blanca">
                             <div class="flexible between-xs middle-xs col-xs-12">
                                 <h2>Registro de vehículo</h2>
                                 <a href="#0">Información</a>
@@ -36,67 +37,64 @@
                                     <div class="row">
                                         <div class="form-group col-xs-12 col-md-6">
                                             <label class="control-label">Matrícula *</label>
-                                            <input type="text" class="form-control" name="matricula" placeholder="VHJ 876" value="#{vehiculoManagedBean.vehiculo.matricula}" />
+                                            <input type="text" class="form-control" name="matricula" placeholder="VHJ 876" jsf:value="#{vehiculoManagedBean.vehiculo.matricula}" />
                                         </div>
                                         <div class="form-group col-xs-12 col-md-6">
                                             <label class="control-label">Número chásis *</label>
-                                            <input type="text" class="form-control" name="chasis" placeholder="HDQ WW12DS 19971617" value="#{vehiculoManagedBean.vehiculo.numeroChasis}"/>
+                                            <input type="text" class="form-control" name="chasis" placeholder="HDQ WW12DS 19971617" jsf:value="#{vehiculoManagedBean.vehiculo.numeroChasis}"/>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group col-xs-12 col-sm-6">
                                             <label class="control-label">Cilindraje *</label>
-                                            <input type="text" class="form-control" name="cilindraje" placeholder="1300 cm^3" value="#{vehiculoManagedBean.vehiculo.cilindraje}"></input>
+                                            <input type="text" class="form-control" name="cilindraje" placeholder="1300 cm^3" jsf:value="#{vehiculoManagedBean.vehiculo.cilindraje}"></input>
                                         </div>
                                         <div class="form-group col-xs-12 col-sm-6 ">
                                             <label class="control-label">Combustible</label>
-                                            <select class="form-control" name="combustible">
-                                                <option></option>
-                                                <option>Gasolina</option>
-                                                <option>Gas vehícular</option>
-                                                <option>Diesel</option>
-                                            </select>
+                                            <input type="text" class="form-control" name="combustible" jsf:value="#{vehiculoManagedBean.vehiculo.combustible}">
+                                                
+                                            </input>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group col-xs-12 col-md-6">
                                             <label class="control-label">Marca *</label>
-                                            <input type="text" class="form-control" name="marca" placeholder="Nissan" />
+                                            <input type="text" class="form-control" name="marca" placeholder="Nissan" jsf:value="#{vehiculoManagedBean.vehiculo.marca}"/>
                                         </div>
                                         <div class="form-group col-xs-12 col-md-6">
                                             <label class="control-label">Modelo *</label>
-                                            <input type="text" class="form-control" name="modelo" placeholder="Cherry" />
+                                            <input type="text" class="form-control" name="modelo" placeholder="Cherry" jsf:value="#{vehiculoManagedBean.vehiculo.modelo}"/>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group col-xs-12 col-md-6">
                                             <label class="control-label">Kilometraje</label>
-                                            <input type="text" class="form-control" name="kilometraje" placeholder="Solo números"></input>
+                                            <input type="text" class="form-control" name="kilometraje" placeholder="Solo números" jsf:value="#{vehiculoManagedBean.vehiculo.kilometraje}"></input>
                                         </div>
                                         <div class="form-group col-xs-12 col-md-6">
                                             <label class="control-label">Tonelaje Maximo</label>
-                                            <input type="text" class="form-control" name="tonelaje" placeholder="1.0 1.5 2.3 4"></input>
+                                            <input type="text" class="form-control" name="tonelaje" placeholder="1.0 1.5 2.3 4" jsf:value="#{vehiculoManagedBean.vehiculo.tonelajeMax}"></input>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group col-xs-12 col-md-6">
                                             <label class=" control-label">Color</label>
-                                            <input type="text" class="form-control" name="color" placeholder="Blanco" value="Blanco" />
+                                            <input type="text" class="form-control" name="color" placeholder="Blanco" value="Blanco" jsf:value="#{vehiculoManagedBean.vehiculo.color}"/>
                                         </div>
                                         <div class="form-group col-xs-12 col-md-6">
                                             <label for="">Foto vehículo</label>
-                                            <input type="file" class="smart-file" name="sample3[]" data-label="Ajuntar foto vehículo"></input>
+                                            <input type="file" class="smart-file" name="sample3[]" data-label="Ajuntar foto vehículo" value="#{vehiculoManagedBean.vehiculo.fotoVehiculo}"></input>
                                         </div>
                                     </div>
                             </div>
                             <div class="form-group col-xs-12">
                                 <button type="submit" class="btn btn-primary pull-left" name="signup" value="Sign up">Registrar nuevo Vehículo</button>
                             </div>
-                        </form>
+                        </h:form>
                         <div class="col-xs-12 col-md-6">
                             <div class="page-header">
                                 <h2>
@@ -110,6 +108,7 @@
                                         <li>
                                             Luego de registrarese el vehículo, se podrá actualizar su información.
                                         </li>
+                                        <h:messages></h:messages> 
                                     </ul>
                                 </hr>
                             </div>
