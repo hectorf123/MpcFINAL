@@ -10,6 +10,7 @@ import co.mpc.backend.model.persistence.entities.Usuario;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -22,16 +23,12 @@ import javax.faces.view.ViewScoped;
 @ViewScoped
 public class SessionBeanProteccion implements Serializable{
 
-    public void verificarSesion(){
-        FacesContext context = FacesContext.getCurrentInstance();
-        try{
+    public void verificarSesion() throws IOException{
+            FacesContext context = FacesContext.getCurrentInstance();
             Usuario us = (Usuario) context.getExternalContext().getSessionMap().get("usuario");
             if(us == null){
-                context.getExternalContext().redirect("./../../permisos.xhtml");
-                context.addMessage(null, new FacesMessage("Permisos insuficientes."));
+                ExternalContext em = FacesContext.getCurrentInstance().getExternalContext();
+                em.redirect(em.getRequestContextPath() + "/index.xhtml");
             }
-        }catch (IOException e) {
-            context.addMessage(null, new FacesMessage("Ocurrio un error permisos"));
-        }
     }
 }

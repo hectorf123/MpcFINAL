@@ -50,6 +50,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByCorreoElectronico", query = "SELECT u FROM Usuario u WHERE u.correoElectronico = :correoElectronico")})
 public class Usuario implements Serializable,IEntity {
 
+    @Lob
+    @Column(name = "foto_perfil")
+    private byte[] fotoPerfil;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,9 +93,6 @@ public class Usuario implements Serializable,IEntity {
     @Size(min = 1, max = 50)
     @Column(name = "correo_electronico")
     private String correoElectronico;
-    @Lob
-    @Column(name = "foto_perfil")
-    private byte[] fotoPerfil;
     @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
     @ManyToOne(fetch = FetchType.LAZY)
     private Ciudad idCiudad;
@@ -265,5 +266,4 @@ public class Usuario implements Serializable,IEntity {
     public String getPK() {
         return idUsuario.toString();
     }
-    
 }

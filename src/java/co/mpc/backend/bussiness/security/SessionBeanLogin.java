@@ -15,6 +15,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 /**
@@ -27,11 +28,11 @@ public class SessionBeanLogin implements Serializable{
 
     private Usuario usuario;
     @EJB private UsuarioFacadeLocal ufl;
-    @EJB private PermisoFacadeLocal pfl;
+//    @EJB private PermisoFacadeLocal pfl;
     
     @PostConstruct
     public void init(){
-        usuario = ufl.atenticarUsuario((Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"));
+        usuario = new Usuario();
     }
 
     public Usuario getUsuario() {
@@ -42,21 +43,33 @@ public class SessionBeanLogin implements Serializable{
         this.usuario = usuario;
     }
     
-    public List<Permiso> listaPermisos(){
-        List<Permiso> p = pfl.findAll();
-        
-        for (Permiso a: p){
-            if(a.getIdPermiso() == 1){
-            
-            }
-        }
-        
-        return pfl.findAll();
-    }
+//    public List<Permiso> listaPermisos(){
+//        List<Permiso> p = pfl.findAll();
+//        
+//        for (Permiso a: p){
+//            if(a.getIdPermiso() == 1){
+//            ufl.atenticarUsuario((Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"));
+//            }
+//        }
+//        
+//        return pfl.findAll();
+//    }
 
-    public void cerrarSession() throws IOException{
+    //Logica de negocio
+    public String iniciarSesion(){
+        if(ufl.atenticarUsuario(usuario)!= null){
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
+            return "protegido/usuario";
+        }
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario o contraseña no válido."));
+        return null;
+    }
+    
+    public String cerrarSession() throws IOException{
+        usuario = null;
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("usuario");
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/index.xhtml?faces-redirect=true");
+        return "/index?faces-redirect=true";
     }
     
 }

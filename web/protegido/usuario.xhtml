@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../resources/plantillampc.xhtml">
+
+            <ui:define name="main">
+                <h:messages />
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="FechaEmision:" for="fechaEmision" />
+                            <h:inputText id="fechaEmision" value="#{ordenManagedBean.orden.fechaEmision}" title="FechaEmision" required="true" requiredMessage="The FechaEmision field is required.">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="PlazoMaximo:" for="plazoMaximo" />
+                            <h:inputText id="plazoMaximo" value="#{ordenManagedBean.orden.plazoMaximo}" title="PlazoMaximo" required="true" requiredMessage="The PlazoMaximo field is required.">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="IdEstadoOrden:" for="idEstadoOrden" />
+                            <h:selectOneMenu id="idEstadoOrden" value="#{ordenManagedBean.orden.idEstadoOrden}" title="IdEstadoOrden" required="true" requiredMessage="The IdEstadoOrden field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{estadoOrdenManagedBean.listarEstadoOrden()}" var="es" itemLabel="#{es.nombreEstadoOrden}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="IdMotivo:" for="idMotivo" />
+                            <h:selectOneMenu id="idMotivo" value="#{ordenManagedBean.orden.idMotivo}" title="IdMotivo" required="true" requiredMessage="The IdMotivo field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{motivosOrdenManagedBean.listarMotivoOrden()}" var="mo" itemLabel="#{mo.motivo}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="IdTipoOrden:" for="idTipoOrden" />
+                            <h:selectOneMenu id="idTipoOrden" value="#{ordenManagedBean.orden.idTipoOrden}" title="IdTipoOrden" required="true" requiredMessage="The IdTipoOrden field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{tipoOrdenManagedBean.listarTipoOrden()}" var="tp" itemLabel="#{tp.nombreTipoOrden}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="IdUsuario:" for="idUsuario" />
+                            <h:selectOneMenu id="idUsuario" value="#{ordenManagedBean.orden.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{usuarioManagedBean.listar()}" var="us"  itemLabel="#{us.nombres}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="IdVehiculo:" for="idVehiculo" />
+                            <h:selectOneMenu id="idVehiculo" value="#{ordenManagedBean.orden.idVehiculo}" title="IdVehiculo" required="true" requiredMessage="The IdVehiculo field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{vehiculoManagedBean.listar()}" var="vh" itemLabel="#{vh.matricula}"/>
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                        <h:commandButton value="registrar" action="#{ordenManagedBean.registrarOrden()}"/>
+                    </h:form>
+                </f:view>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -20,7 +20,6 @@ public class AbstractConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        context.addMessage(null, new FacesMessage("si entro"));
         try {
             Integer key = Integer.valueOf(value);
             IManagedBean managedBean =(IManagedBean) context.getApplication().getELResolver().getValue

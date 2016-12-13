@@ -73,15 +73,6 @@ public class UsuarioManagedBean implements Serializable,IManagedBean<Usuario>{
         uFL.remove(u);
     }
     
-    //Logica de negocio
-    public String iniciarSesion(){
-        if(uFL.atenticarUsuario(usuario)!= null){
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
-            return "protegido/inicio?faces-redirect=true&includeviewparams=true";
-        }
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario o contraseña no válido."));
-        return null;
-    }
     
     public void actualizarUsuario(){
         uFL.edit(usuario);

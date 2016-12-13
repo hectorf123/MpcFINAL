@@ -6,9 +6,7 @@
 package co.mpc.backend.model.persistence.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,20 +15,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Juank
+ * @author Andres
  */
 @Entity
 @Table(name = "vehiculos")
@@ -43,11 +38,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Vehiculo.findByCilindraje", query = "SELECT v FROM Vehiculo v WHERE v.cilindraje = :cilindraje")
     , @NamedQuery(name = "Vehiculo.findByTonelajeMax", query = "SELECT v FROM Vehiculo v WHERE v.tonelajeMax = :tonelajeMax")
     , @NamedQuery(name = "Vehiculo.findByKilometraje", query = "SELECT v FROM Vehiculo v WHERE v.kilometraje = :kilometraje")
-    , @NamedQuery(name = "Vehiculo.findByCombustible", query = "SELECT v FROM Vehiculo v WHERE v.combustible = :combustible")
     , @NamedQuery(name = "Vehiculo.findByModelo", query = "SELECT v FROM Vehiculo v WHERE v.modelo = :modelo")
     , @NamedQuery(name = "Vehiculo.findByMarca", query = "SELECT v FROM Vehiculo v WHERE v.marca = :marca")
     , @NamedQuery(name = "Vehiculo.findByColor", query = "SELECT v FROM Vehiculo v WHERE v.color = :color")})
-public class Vehiculo implements Serializable,IEntity {
+public class Vehiculo implements Serializable, IEntity{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -80,11 +74,6 @@ public class Vehiculo implements Serializable,IEntity {
     private int kilometraje;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 15)
-    @Column(name = "combustible")
-    private String combustible;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "modelo")
     private String modelo;
@@ -101,25 +90,18 @@ public class Vehiculo implements Serializable,IEntity {
     @Lob
     @Column(name = "foto_vehiculo")
     private byte[] fotoVehiculo;
-    @ManyToMany(mappedBy = "vehiculoCollection", fetch = FetchType.LAZY)
-    private Collection<Conductor> conductorCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVehiculo", fetch = FetchType.LAZY)
-    private Collection<ComponenteVehiculo> componenteVehiculoCollection;
     @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Ciudad idCiudad;
+    @JoinColumn(name = "combustible", referencedColumnName = "id_tipo_combustible")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Combustible combustible;
     @JoinColumn(name = "id_estado_vehiculo", referencedColumnName = "id_estado_vehiculo")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private EstadoVehiculo idEstadoVehiculo;
     @JoinColumn(name = "id_tipo_vehiculo", referencedColumnName = "id_tipo_vehiculos")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private TipoVehiculo idTipoVehiculo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVehiculo", fetch = FetchType.LAZY)
-    private Collection<DocumentoVehiculo> documentoVehiculoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVehiculo", fetch = FetchType.LAZY)
-    private Collection<Orden> ordenCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVehiculoFalla", fetch = FetchType.LAZY)
-    private Collection<FallaVehiculo> fallaVehiculoCollection;
 
     public Vehiculo() {
     }
@@ -128,14 +110,13 @@ public class Vehiculo implements Serializable,IEntity {
         this.idVehiculo = idVehiculo;
     }
 
-    public Vehiculo(Integer idVehiculo, String matricula, String numeroChasis, String cilindraje, int tonelajeMax, int kilometraje, String combustible, String modelo, String marca, String color) {
+    public Vehiculo(Integer idVehiculo, String matricula, String numeroChasis, String cilindraje, int tonelajeMax, int kilometraje, String modelo, String marca, String color) {
         this.idVehiculo = idVehiculo;
         this.matricula = matricula;
         this.numeroChasis = numeroChasis;
         this.cilindraje = cilindraje;
         this.tonelajeMax = tonelajeMax;
         this.kilometraje = kilometraje;
-        this.combustible = combustible;
         this.modelo = modelo;
         this.marca = marca;
         this.color = color;
@@ -189,14 +170,6 @@ public class Vehiculo implements Serializable,IEntity {
         this.kilometraje = kilometraje;
     }
 
-    public String getCombustible() {
-        return combustible;
-    }
-
-    public void setCombustible(String combustible) {
-        this.combustible = combustible;
-    }
-
     public String getModelo() {
         return modelo;
     }
@@ -229,30 +202,20 @@ public class Vehiculo implements Serializable,IEntity {
         this.fotoVehiculo = fotoVehiculo;
     }
 
-    @XmlTransient
-    public Collection<Conductor> getConductorCollection() {
-        return conductorCollection;
-    }
-
-    public void setConductorCollection(Collection<Conductor> conductorCollection) {
-        this.conductorCollection = conductorCollection;
-    }
-
-    @XmlTransient
-    public Collection<ComponenteVehiculo> getComponenteVehiculoCollection() {
-        return componenteVehiculoCollection;
-    }
-
-    public void setComponenteVehiculoCollection(Collection<ComponenteVehiculo> componenteVehiculoCollection) {
-        this.componenteVehiculoCollection = componenteVehiculoCollection;
-    }
-
     public Ciudad getIdCiudad() {
         return idCiudad;
     }
 
     public void setIdCiudad(Ciudad idCiudad) {
         this.idCiudad = idCiudad;
+    }
+
+    public Combustible getCombustible() {
+        return combustible;
+    }
+
+    public void setCombustible(Combustible combustible) {
+        this.combustible = combustible;
     }
 
     public EstadoVehiculo getIdEstadoVehiculo() {
@@ -269,33 +232,6 @@ public class Vehiculo implements Serializable,IEntity {
 
     public void setIdTipoVehiculo(TipoVehiculo idTipoVehiculo) {
         this.idTipoVehiculo = idTipoVehiculo;
-    }
-
-    @XmlTransient
-    public Collection<DocumentoVehiculo> getDocumentoVehiculoCollection() {
-        return documentoVehiculoCollection;
-    }
-
-    public void setDocumentoVehiculoCollection(Collection<DocumentoVehiculo> documentoVehiculoCollection) {
-        this.documentoVehiculoCollection = documentoVehiculoCollection;
-    }
-
-    @XmlTransient
-    public Collection<Orden> getOrdenCollection() {
-        return ordenCollection;
-    }
-
-    public void setOrdenCollection(Collection<Orden> ordenCollection) {
-        this.ordenCollection = ordenCollection;
-    }
-
-    @XmlTransient
-    public Collection<FallaVehiculo> getFallaVehiculoCollection() {
-        return fallaVehiculoCollection;
-    }
-
-    public void setFallaVehiculoCollection(Collection<FallaVehiculo> fallaVehiculoCollection) {
-        this.fallaVehiculoCollection = fallaVehiculoCollection;
     }
 
     @Override

@@ -17,8 +17,9 @@
         <h:outputStylesheet name="css/formValidation-dist.css"/>
         <h:outputStylesheet name="css/bootstrap-select.min.css"/>
         <h:outputStylesheet name="css/iconos-mpc.css"/>
-        <h:outputStylesheet name="css/amaran-min.css"/>
+        <h:outputStylesheet name="#{request.contextPath}css/amaran-min.css"/>
         <link rel="shortcut icon" type="image/x-icon" href="#{resource['img/favicon.png']}"/>
+        <f:event type="preRenderView" listener="#{sessionBeanProteccion.verificarSesion()}" />
         <title>Sistema mpc</title>
     </h:head>
 

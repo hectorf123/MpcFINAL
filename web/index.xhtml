@@ -34,11 +34,11 @@
                                 <h1>Iniciar sesión</h1>
                                 <div class="form-group">
                                     <label for="n-cedula" class="sr-only">Número cédula</label>
-                                    <input type="text" id="n-cedula" name="usuario" class="form-control" placeholder="Número cédula *" jsf:value="#{usuarioManagedBean.usuario.numeroCedula}"/>
+                                    <input type="text" id="n-cedula" name="usuario" class="form-control" placeholder="Número cédula *" jsf:value="#{sessionBeanLogin.usuario.numeroCedula}"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="key" class="sr-only">Password</label>
-                                    <input type="password" name="password" id="key" class="form-control" placeholder="Password" jsf:value="#{usuarioManagedBean.usuario.clave}"/>
+                                    <input type="password" name="password" id="key" class="form-control" placeholder="Password" jsf:value="#{sessionBeanLogin.usuario.clave}"/>
                                 </div>
                                 <div class="checkbox">
                                     <label><input type="checkbox" value=""  class="styled"/>Recordarme</label>
@@ -46,7 +46,7 @@
                                 <div class="alert alert-danger no-ver">
                                     <button type="button" class="close cerrar-alerta">&times;</button> Datos de ingreso no validos
                                 </div>
-                                <h:commandButton class="btn btn-lg btn-primary btn-block" action="#{usuarioManagedBean.iniciarSesion()}" value="Ingresar">
+                                <h:commandButton class="btn btn-lg btn-primary btn-block" action="#{sessionBeanLogin.iniciarSesion()}" value="Ingresar">
                                         <f:ajax execute="@form" render="ajaxp"/>
                                 </h:commandButton>
                                 <h:panelGrid id="ajaxp">

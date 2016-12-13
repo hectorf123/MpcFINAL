@@ -6,21 +6,26 @@
 package co.mpc.backend.model.persistence.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Jason St
+ * @author Andres
  */
 @Entity
 @Table(name = "combustible")
@@ -29,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Combustible.findAll", query = "SELECT c FROM Combustible c")
     , @NamedQuery(name = "Combustible.findByIdTipoCombustible", query = "SELECT c FROM Combustible c WHERE c.idTipoCombustible = :idTipoCombustible")
     , @NamedQuery(name = "Combustible.findByNombreTipoCombustible", query = "SELECT c FROM Combustible c WHERE c.nombreTipoCombustible = :nombreTipoCombustible")})
-public class Combustible implements Serializable {
+public class Combustible implements Serializable, IEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,6 +45,8 @@ public class Combustible implements Serializable {
     @Size(max = 40)
     @Column(name = "nombre_tipo_combustible")
     private String nombreTipoCombustible;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "combustible", fetch = FetchType.EAGER)
+    private Collection<Vehiculo> vehiculoCollection;
 
     public Combustible() {
     }
@@ -62,6 +69,15 @@ public class Combustible implements Serializable {
 
     public void setNombreTipoCombustible(String nombreTipoCombustible) {
         this.nombreTipoCombustible = nombreTipoCombustible;
+    }
+
+    @XmlTransient
+    public Collection<Vehiculo> getVehiculoCollection() {
+        return vehiculoCollection;
+    }
+
+    public void setVehiculoCollection(Collection<Vehiculo> vehiculoCollection) {
+        this.vehiculoCollection = vehiculoCollection;
     }
 
     @Override
@@ -87,6 +103,11 @@ public class Combustible implements Serializable {
     @Override
     public String toString() {
         return "co.mpc.backend.model.persistence.entities.Combustible[ idTipoCombustible=" + idTipoCombustible + " ]";
+    }
+
+    @Override
+    public String getPK() {
+        return idTipoCombustible.toString();
     }
     
 }
