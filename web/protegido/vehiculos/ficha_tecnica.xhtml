@@ -1,0 +1,435 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./../../resources/plantillampc.xhtml">
+
+            <ui:define name="main">
+                <div class="row sin-margen caja miga">
+            <div class="col-xs-12 col-sm-6">
+                <ol class="breadcrumb">
+                    <li><a href="inicio.html"><i class="mpc-home"></i>Inicio</a></li>
+                    <li><a href="lista_vehiculos.html"><i class="mpc-list-alt"></i>Lista de vehículos</a></li>
+                    <li class="active"><i class="mpc-car"></i>Ficha técnica</li>
+                </ol>
+            </div>
+            <div class="col-xs-12 col-sm-6 titulo-pagina end-md">
+                <h1>CHT 871</h1>
+                <div class="dash-titulo"></div>
+                <div class="informacion-titular">
+                    <p class="letra success">0 Componentes dañados</p>
+                    <p class="letra danger">0 Documentos adjuntos</p>
+                </div>
+            </div>
+        </div>
+        <!-- Contenido -->
+        <div class="row  panel panel-mpc sin-padding">
+            <div class="panel-heading cien flexible between-xs middle-xs ">
+                <a id="editar-ficha" data-placement="bottom" title="Editar ficha técnina" class="ver-edicion btn btn-primary mpc-edit"></a>
+                <div>
+                    <a id="cerrar-edicion" class="nover-edicion btn btn-primary mpc-close no-ver"></a>
+                    <a id="actualizar-edicion" class="nover-edicion btn btn-default no-ver">Actualizar</a>
+                </div>
+                <!--<label for=" "><i class="mpc-list-alt "></i>Ficha técnica CHT 871</label>-->
+                <div>
+                    <a id="a1" data-placement="bottom" title="Imprimir ficha técnica" class="ver-edicion btn btn-primary mpc-print "></a>
+                    <a id="a2" data-placement="bottom" title="Enviar información" class="ver-edicion btn btn-primary mpc-mail "></a>
+                    <a id="a3" data-placement="bottom" title="Descargar en PDF" class="ver-edicion btn btn-primary mpc-download "></a>
+                    <a id="eliminar" data-placement="bottom" title="Elminar ficha técnica" class="nover-edicion btn btn-danger mpc-trash no-ver"></a>
+                </div>
+
+            </div>
+            <div id="ficha-tecnica" class="row col-xs-12">
+                 <div id="informacion_general " class="row col-md-12 ">
+                    <div id="foto_vehiculo " class="col-xs-12 col-md-4 flexible center-xs middle-xs start-md ">
+                        <img src="../img/vehiculos/ejemplo.jpg " alt=" " name="fotooriginal"></img>
+                    </div>
+                    <div id="informacion" class="row col-xs-12 col-md-8 ">
+                        <ul class="col-xs-12 col-md-6">
+                            <li>Número de chasis: 8523KP854</li><br></br>
+                            <li>Cilindraje: <span name="cilindraje-nombre">1300</span>cm^3</li><br></br>
+                            <li>Combustible: <span name="combustible-nombre">Gasolina</span></li><br></br>
+                            <li>Marca: Volvo</li><br></br>
+                                <li>Estado: <span class="alert-success">Disponible</span></li><br></br>
+                        </ul>
+                        <ul class="col-xs-12 col-md-6">
+                            <li>Modelo: <span name="modelo-nombre">HFG 400</span></li><br></br>
+                            <li>Fecha de registro: 14/06/2015</li><br></br>
+                            <li>Color: <span name="color-nombre">Blanco</span></li><br></br>
+                            <li>RVT: <span class="alert-warning">Pendiente</span></li><br></br>
+                            <li>SOAT:<span class="alert-warning">Pendiente</span></li><br></br>
+                        </ul>
+                    </div>
+                </div>
+                <div id="documentacion_observacion " class="col-xs-12 col-sm-6 ">
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div id="panel-1" class="panel-heading">
+                                <a class="panel-title" data-toggle="collapse" data-parent="#panel-324811" href="#panel-element-753886"><i class="mpc-clipboard"></i>Documentos</a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <div class="alert alert-danger">
+                                    <strong>No hay documentos adjuntos</strong>
+                                </div>
+                                <br></br>
+
+                                <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#documentos"><i class="mpc-plus"></i>Agregar documentación</button>
+
+                            </div>
+
+                        </div>
+                        <div class="panel panel-default">
+                            <div id="panel-2" class="panel-heading">
+                                <a class="panel-title" data-toggle="collapse" data-parent="#panel-324811" href="#panel-element-666583"><i class="mpc-book-1"></i>Historial revisiones y mantenimientos</a>
+                            </div>
+
+                            <div class="panel-body">
+                                <table id="tabla" class="table table-condensed tabla-left">
+                                    <thead>
+                                        <tr>
+                                            <th>Realizado por :</th>
+                                            <th>Fecha</th>
+                                            <th>Detalles</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Andres Gonzalez</td>
+                                            <td>16/05/2007</td>
+                                            <td>Cambio de disco de frenos</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Andres Gonzalez</td>
+                                            <td>16/05/2007</td>
+                                            <td>Cambio de disco de frenos</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div id="panel-3" class="panel-heading">
+                                <a class="panel-title" data-toggle="collapse" data-parent="#panel-324811" href="#panel-element-1"><i class="mpc-alert"></i>Observaciones realizadas</a>
+                            </div>
+                            <div class="panel-body">
+                                <p>Se realizaron cambios a los discos de los frenos se debe tener precaución con el aceite de dichos frenos ya que no estan ayudando a la lubricación de estos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="componentes" class="col-xs-12 col-sm-6 table-responsive tablas">
+                    <h3>Componentes Asignados</h3>
+                    <table id="tabla-componentes" class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Estado</th>
+                                <th>Vida util</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <hr></hr>
+                    <button type="button" class="btn btn-mpc pull-right" id="agregar-componente"><i class="mpc-plus"></i>Asignar componentes</button>
+                </div>
+            </div>
+            <div id="edicion-ficha" class="col-xs-12 row no-ver">
+                <div id="informacion_general " class="row col-md-12 ">
+                    <div id="foto_vehiculo " class="col-xs-12 col-md-4 flexible columna  top-xs start-md ">
+                        <img src="" alt=" " name="fotodeVehiculo"/>
+                        <input type="file" class="form-control" name="fotoVehiculo"    
+                            data-field-type="bootstrap-file-filed"  
+                            data-label="Seleccionar archivo"  
+                            data-btn-class="btn-primary"  
+                            data-file-types="image/jpeg,image/png"  
+                            data-preview="on" 
+                            data-max-file-size="100000"
+                            multiple="true" />
+                        <span class="small">Máx 100kb, png, jpg</span>
+                    </div>
+                    <div id="informacion" class="row col-xs-12 col-md-8 ">
+                        <div class="alerta-vacio"></div>
+                        <div class="form-group col-xs-12 col-md-6">
+                            <label class="control-label">Cilindraje</label>
+                            <input type="text" class="form-control" name="cilindraje"/>
+                        </div>
+                        <div class="form-group col-xs-12 col-md-6">
+                            <label class="control-lable">Tipo de combustible</label>
+                            <input type="text" name="combustible" class="form-control"/>
+                        </div>
+                        <div class="form-group col-xs-12 col-md-6">
+                            <label class="control-lable">Modelo</label>
+                            <input type="text" name="modelo" class="form-control"/>
+                        </div>
+                        <div class="form-group col-xs-12 col-md-6">
+                            <label class="control-lable">Color</label>
+                            <input type="text" name="color" class="form-control"/>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+            </ui:define>
+            <div class="modal fade" id="documentos">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Adjuntar documentación</h4>
+                </div>
+                   <form id="loginForm">
+                        <div class="modal-body row">
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                                <label class="control-label">Tipo de documento</label>
+                                <select name="documentoTipo" class="form-control">
+                                        <option value=""> </option>
+                                        <option value="option1"> Revisión tecno mecánica</option>
+                                        <option value="option2"> SOAT </option>
+                                        <option value="option3"> Impuesto de circulación</option>
+                                        <option value="option4"> Tarjeta de Operación </option>
+                                        <option value="option5"> Manifiesto de Carga </option>
+                                    </select>
+                            </div>
+
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                                <label for="" class="control-label">Fecha de expedición</label>
+                                <input type="date" name="fechaexpedicion" class="form-control"/>
+                            </div>
+
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                                <label for="" class="control-label">Fecha de vencimiento</label>
+                                <input type="date" name="fechavencimiento" class="form-control"/>
+                            </div>
+                            <div class="from-group col-xs-12 col-sm-6">
+                                <input type="file" class="form-control" name="documentoAdjunto"    
+                                    data-field-type="bootstrap-file-filed"  
+                                    data-label="Seleccionar archivo"  
+                                    data-btn-class="btn-primary"  
+                                    data-file-types="image/jpeg,image/png,application/pdf"  
+                                    data-preview="on" 
+                                    data-max-file-size="200000"
+                                    multiple="true"/>
+                                <span class="small">Máx 200kb, pdf, png, jpg</span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Registrar documento</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+        
+    <script src="../js/jquery-dist.js "></script>
+    <script src="../js/boostrap-dist.js "></script>
+    <script src="../js/jquery-confirm-dist.js "></script>
+    <script src="../js/formValidation-dist.js "></script>
+    <script src="../js/framework/bootstrap-dist.js "></script>
+    <script src="../js/jquery-datatables-dist.js"></script>
+    <script src="../js/dataTables-boostrap-dist.js"></script>
+    <script src="../js/jquery-mask.js "></script>
+    <script src="../js/core-dist.js "></script>
+    <script src="../js/bootstrap-filestyle.js "></script>
+
+    <!-- JavaSript personalizado -->
+    <script>
+        $('#editar-ficha').tooltip();
+        $('#a1').tooltip();
+        $('#a2').tooltip();
+        $('#a3').tooltip();
+        $('#eliminar').tooltip();
+        //paneles
+        $('#panel-1').click(function() {
+            $(this).next('.panel-body').slideToggle();
+        });
+        $('#panel-2').click(function() {
+            $(this).next('.panel-body').slideToggle();
+        });
+        $('#panel-3').click(function() {
+                $(this).next('.panel-body').slideToggle();
+            });
+            //tabla-componentes
+        for (i = 0; i < 25; i++) {
+            $('#tabla-componentes tbody').append('<tr><td>' + i + '</td><td>Bujia </td><td>Nuevo </td><td>2 años</td></tr>');
+        }
+
+        $('#tabla-componentes td:last-child').parent().append('<td><i class="mpc-check"></i></td>');
+
+        $('#tabla-componentes').DataTable({
+            "scrollY": "200px",
+            "scrollCollapse": true,
+            "paging": false
+        });
+
+        $('#agregar-componente').on('click',function(){
+            $('#ficha-tecnica').slideToggle();
+            $('#addComponentes').slideToggle();
+        });
+        $('#cerrar-addComponente').on('click', function(){
+            $('#ficha-tecnica').slideToggle();
+            $('#addComponentes').slideToggle();
+        });
+        $('#editar-ficha').on('click',function(){
+            $('#ficha-tecnica').slideToggle();
+            $('#edicion-ficha').slideToggle();
+            $('.ver-edicion').fadeToggle(0);
+            $('.nover-edicion').fadeToggle(0);
+        });
+        $('#cerrar-edicion').on('click', function(){
+            $('#ficha-tecnica').slideToggle();
+            $('#edicion-ficha').slideToggle();
+            $('.ver-edicion').fadeToggle(0);
+            $('.nover-edicion').fadeToggle(0);
+        });
+        
+        //Modo edición
+            $('[name="fotooriginal"]').attr('src','../img/vehiculos/ejemplo.jpg');
+            $('[name="cilindraje"]').val($('[name="cilindraje-nombre"]').text()).mask('0000');
+            $('[name="combustible"]').val($('[name="combustible-nombre"]').text()).mask('SSSSSSSSSSSS').css({'text-transform':'capitalize'});
+            $('[name="modelo"]').val($('[name="modelo-nombre"]').text());
+            $('[name="color"]').val($('[name="color-nombre"]').text()).mask('SSSSSSSSSSSS').css({'text-transform':'capitalize'});
+        //Actulizar edición
+            var count = 0;
+            $('#actualizar-edicion').on('click',function(){
+                if($('[name="color"]').val() ==='' || $('[name="combustible"]').val()==='' || $('[name="cilindraje"]').val()==='' || $('[name="modelo"]').val()===''){
+                    if(count === 1 ){
+                        $('.alerta-vacio').next().remove();
+                        count = 0;
+                    }
+                    $('.alerta-vacio').after('<p class="alert alert-danger col-xs-12">Hay campos vacios.</p>');
+                    count = 1;
+                }else {
+                    $.confirm({
+                        animation: 'scaleX',
+                        columnClass: 'col-xs-12 col-sm-6 col-sm-offset-3',
+                        title: '<i class="mpc-alert"></i>Actualizar',
+                        content: 'Actualizara los siguientes datos:<br>Cilindraje: '+$('[name="cilindraje"]').val()+'<br>Combustible: '+$('[name="combustible"]').val()+'<br>Modelo: '+$('[name="modelo"]').val()+'<br> Color: ' + $('[name="color"]').val(),
+                        theme: 'black',
+                        confirmButton: 'Actulizar',
+                        cancelButton: 'Cancelar',
+                        cancelButtonClass: 'btn-danger',
+                        confirm: function(){
+                            $('[name="cilindraje-nombre"]').text($('[name="cilindraje"]').val());
+                            $('[name="combustible-nombre"]').text($('[name="combustible"]').val());
+                            $('[name="modelo-nombre"]').text($('[name="modelo"]').val());
+                            $('[name="color-nombre"]').text($('[name="color"]').val());
+                            if($('[name="fotoVehiculo"]').val() === ''){
+                            } else {
+                                $('[name="fotooriginal"]').attr('src','../img/vehiculos/ejemplo2.jpg');
+                            }
+                            $('#ficha-tecnica').slideToggle();
+                            $('#edicion-ficha').slideToggle();
+                            $('.ver-edicion').fadeToggle(0);
+                            $('.nover-edicion').fadeToggle(0);
+                        }
+                    });
+                }
+            });
+            $('[name="fotodeVehiculo"]').attr('src', $('[name="fotooriginal"]').attr('src'));
+
+        //Eliminar vehículo
+            $('#eliminar').on('click', function(){
+                $.confirm({
+                    animation: 'scaleX',
+                    columnClass: 'col-xs-12 col-sm-6 col-sm-offset-3',
+                    theme: 'black',
+                    title: '<i class="mpc-alert"></i>Eliminar vehículo',
+                    content:'Elimara el vehículo CHT 871, esta acción podría no ser reversible.',
+                    confirmButton: 'Eliminar',
+                    cancelButton: 'Cancelar',
+                    cancelButtonClass: 'btn-danger',
+                    confirm: function(){
+                        $.alert({
+                            animation: 'scaleX',
+                            columnClass: 'col-xs-12 col-sm-6 col-sm-offset-3',
+                            theme: 'black',
+                            title: false,
+                            content: 'url:text.txt',
+                            contentLoaded: function(data, status, xhr){
+                                var self = this;
+                                setTimeout(function(){
+                                    self.setContent('Se ha eliminado el vehículo.');
+                                }, 2000);
+                            },
+                            confirm: function(){
+                                window.location = "lista_vehiculos.html";
+                            }
+                        });
+                    }
+                });
+            });
+        //Formulario modal
+        $('#documentos').on('hidden.bs.modal', function() {
+            $('#loginForm').formValidation('resetForm', true);
+        });
+        $('#loginForm').formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                documentoTipo: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Se requiere de un tipo de documento'
+                        }
+                    }
+                },
+                fechaexpedicion: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Se requiere de la fecha.'
+                        },
+                        date: {
+                            format: 'DD/MM/YYYY',
+                            message: 'La fecha no tiene un formato valido.'
+                        }
+                    }
+                },
+                fechavencimiento: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Se requiere de la fecha.'
+                        },
+                        date: {
+                            format: 'DD/MM/YYYY',
+                            message: 'La fecha no tiene un formato valido.'
+                        }
+                    }
+                },
+                documentoAdjunto: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Debe adjuntar un documento.'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png,pdf',
+                            type: 'image/jpeg,image/png,application/pdf',
+                            maxSize: 200000,
+                            message: 'Tipo de archivo no valido'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+        </ui:composition>
+
+    </body>
+</html>

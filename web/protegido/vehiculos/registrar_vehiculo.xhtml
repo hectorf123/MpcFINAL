@@ -26,7 +26,7 @@
                     </div>
                     <!-- Contenido -->
                     <div class="row">
-                        <h:form id="formularioRegistroUsuario" class="col-xs-12 col-md-6 caja blanca">
+                        <form jsf:id="formularioRegistroUsuario" class="col-xs-12 col-md-6 caja blanca"/>
                             <div class="flexible between-xs middle-xs col-xs-12">
                                 <h2>Registro de vehículo</h2>
                                 <a href="#0">Información</a>
@@ -52,9 +52,9 @@
                                         </div>
                                         <div class="form-group col-xs-12 col-sm-6 ">
                                             <label class="control-label">Combustible</label>
-                                            <input type="text" class="form-control" name="combustible" jsf:value="#{combustibleManagedBean.combustible.nombreTipoCombustible}">
-                                                
-                                            </input>
+                                            <h:selectOneMenu value="#{combustibleManagedBean.combustible.idTipoCombustible}">
+                                                <f:selectItems value="#{combustibleManagedBean.listaCombustible()}" var="lc" itemLabel="#{lc.nombreTipoCombustible}"/>
+                                            </h:selectOneMenu>    
                                         </div>
                                     </div>
 
@@ -85,16 +85,14 @@
                                             <label class=" control-label">Color</label>
                                             <input type="text" class="form-control" name="color" placeholder="Blanco" value="Blanco" jsf:value="#{vehiculoManagedBean.vehiculo.color}"></input>
                                         </div>
-                                        <div class="form-group col-xs-12 col-md-6">
-                                            <label for="">Foto vehículo</label>
-                                            <input type="file" class="smart-file" name="archivo" data-label="Ajuntar foto vehículo" jsf:value="#{vehiculoManagedBean.vehiculo.fotoVehiculo}"></input>
-                                        </div>
+          
                                     </div>
+                            </div>
                             </div>
                             <div class="form-group col-xs-12">
                                 <button type="submit" class="btn btn-primary pull-left" name="signup" value="Sign up" jsf:value="#{vehiculoManagedBean.registrar()}">Registrar nuevo Vehículo</button>
                             </div>
-                        </h:form>
+                        </form>
                         <div class="col-xs-12 col-md-6">
                             <div class="page-header">
                                 <h2>

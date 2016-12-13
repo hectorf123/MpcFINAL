@@ -56,11 +56,8 @@ public class VehiculoManagedBean implements Serializable, IManagedBean<Vehiculo>
     }
 
     public void registrar() {
-        try {
+ 
             vFL.create(vehiculo);
-        } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se puede registrar un vehículo con el mismo número de matricula."));
-        }
 
     }
 
