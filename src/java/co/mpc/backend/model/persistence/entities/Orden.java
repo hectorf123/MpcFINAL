@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Orden.findAll", query = "SELECT o FROM Orden o")
     , @NamedQuery(name = "Orden.findByIdOrden", query = "SELECT o FROM Orden o WHERE o.idOrden = :idOrden")
     , @NamedQuery(name = "Orden.findByFechaEmision", query = "SELECT o FROM Orden o WHERE o.fechaEmision = :fechaEmision")
+    , @NamedQuery(name = "Orden.findByIdVehiculo", query = "SELECT o FROM Orden o WHERE o.idVehiculo=:idVehiculo")
     , @NamedQuery(name = "Orden.findByPlazoMaximo", query = "SELECT o FROM Orden o WHERE o.plazoMaximo = :plazoMaximo")})
 public class Orden implements Serializable, IEntity {
 
@@ -198,5 +199,5 @@ public class Orden implements Serializable, IEntity {
     public String getPK() {
         return idOrden.toString();
     }
-    
+
 }

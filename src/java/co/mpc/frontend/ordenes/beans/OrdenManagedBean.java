@@ -5,7 +5,9 @@
  */
 package co.mpc.frontend.ordenes.beans;
 
+import co.mpc.backend.model.persistence.entities.EstadoOrden;
 import co.mpc.backend.model.persistence.entities.Orden;
+import co.mpc.backend.model.persistence.facades.EstadoOrdenFacadeLocal;
 import co.mpc.backend.model.persistence.facades.OrdenFacadeLocal;
 import co.mpc.frontend.logica.IManagedBean;
 import javax.inject.Named;
@@ -26,8 +28,11 @@ import javax.inject.Inject;
 public class OrdenManagedBean implements Serializable, IManagedBean<Orden> {
 
     private Orden orden;
+    private EstadoOrden estadoOrden;
     @Inject
     private OrdenFacadeLocal ordenFL;
+    @Inject
+    private EstadoOrdenFacadeLocal estadoOrdenFL;
 
     public OrdenManagedBean() {
     }
@@ -35,6 +40,7 @@ public class OrdenManagedBean implements Serializable, IManagedBean<Orden> {
     @PostConstruct
     public void init() {
         orden = new Orden();
+        estadoOrden=new EstadoOrden();
     }
 
     @Override
@@ -52,6 +58,8 @@ public class OrdenManagedBean implements Serializable, IManagedBean<Orden> {
 
     public void registrarOrden() {
         if (ordenFL.verificarOrden(orden) == null) {
+            estadoOrden = estadoOrdenFL.find(6);
+            estadoOrden.setIdEstadoOrden(6);
             ordenFL.create(orden);
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se puede crear mas de 4 ordenes"));

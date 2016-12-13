@@ -34,7 +34,7 @@ public class OrdenFacade extends AbstractFacade<Orden> implements OrdenFacadeLoc
     public Orden verificarOrden(Orden o) {
         TypedQuery<Orden> tO = em.createNamedQuery("Orden.findByIdVehiculo", Orden.class);
         tO.setParameter("idVehiculo", o.getIdVehiculo());
-        if (tO.getResultList().size() > 1) {
+        if (tO.getResultList().size() > 4) {
             return tO.getResultList().get(0);
         } else {
             return null;
